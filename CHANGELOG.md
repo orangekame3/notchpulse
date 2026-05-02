@@ -1,5 +1,7 @@
 # Changelog
 
+## [v0.1.4](https://github.com/orangekame3/notchpulse/compare/v0.1.3...v0.1.4) - 2026-05-02
+
 ## [v0.1.3](https://github.com/orangekame3/notchpulse/compare/v0.1.2...v0.1.3) - 2026-05-02
 
 ## [v0.1.2](https://github.com/orangekame3/notchpulse/compare/v0.1.1...v0.1.2) - 2026-05-02
