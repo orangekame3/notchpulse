@@ -1,0 +1,7 @@
+# config file for the tagpr in git config format
+# The tagpr generates the release pull request and tag from the main branch.
+# See: https://github.com/Songmu/tagpr
+[tagpr]
+    vPrefix = true
+    releaseBranch = main
+    versionFile = Sources/NotchCPUMonitor/Info.plist, Makefile
