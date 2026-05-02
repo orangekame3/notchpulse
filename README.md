@@ -14,14 +14,15 @@
   <img src="assets/notch.jpg" alt="NotchPulse Screenshot" width="600">
 </p>
 
-The notch becomes a living system monitor — CPU usage, memory pressure, displayed as a natural extension of the notch itself.
+The notch becomes a living system monitor — CPU usage, memory pressure, GPU utilization, displayed as a natural extension of the notch itself.
 
 ## Features
 
 - **Notch-native design** — A black wing extends from the notch, blending seamlessly
 - **CPU monitoring** — Total, User, and System CPU usage via Mach kernel APIs
 - **Memory monitoring** — Used, App, Wired, and Compressed memory stats
-- **Click to configure** — Tap the wing to open a settings panel and switch between CPU/Memory
+- **GPU monitoring** — Real-time GPU utilization via IOKit (Apple Silicon & Intel)
+- **Click to configure** — Tap the wing to open a settings panel and switch between CPU/Memory/GPU
 - **Hover to expand** — Wing widens on hover to show detailed breakdown
 - **Load indicators** — Text color shifts: white (normal), orange (warning), red (high load)
 - **Minimal footprint** — No Dock icon, no Cmd+Tab entry, < 1% CPU usage
@@ -62,17 +63,17 @@ xattr -cr /Applications/NotchPulse.app
 
 ## Usage
 
-Launch the app — a small black wing appears to the right of your notch, showing `C 12%` (CPU) or `M 28%` (Memory).
+Launch the app — a small black wing appears to the right of your notch, showing `C 12%` (CPU), `M 28%` (Memory), or `G 5%` (GPU).
 
 | State | Display |
 |-------|---------|
-| Normal | `C 12%` or `M 28%` |
+| Normal | `C 12%`, `M 28%`, or `G 5%` |
 | Hover | `C 12% U:8 S:3` (detailed breakdown) |
 | Click | Settings panel drops down |
 
 ### Settings Panel
 
-- **Display** — Switch between CPU and Memory
+- **Display** — Switch between CPU, Memory, and GPU
 - **Refresh** — Update interval (1s / 2s / 5s)
 - **Start at Login** — Auto-launch toggle
 - **Quit** — Exit the app
@@ -104,6 +105,7 @@ Sources/NotchCPUMonitor/
   DropdownPanelView.swift  — Settings panel UI
   CPUStatsProvider.swift   — Mach kernel CPU stats (host_statistics)
   MemoryStatsProvider.swift — VM memory stats (host_statistics64)
+  GPUStatsProvider.swift   — GPU utilization via IOKit (IOAccelerator)
   SettingsStore.swift      — UserDefaults persistence
   LoginItemManager.swift   — SMAppService login item
 ```

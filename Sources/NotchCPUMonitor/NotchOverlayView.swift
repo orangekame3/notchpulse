@@ -46,6 +46,7 @@ struct WingShape: Shape {
 struct NotchOverlayView: View {
     @ObservedObject var cpuProvider: CPUStatsProvider
     @ObservedObject var memoryProvider: MemoryStatsProvider
+    @ObservedObject var gpuProvider: GPUStatsProvider
     @ObservedObject var settings: SettingsStore
     let loginItemManager: LoginItemManager
     let notchHeight: CGFloat
@@ -59,6 +60,7 @@ struct NotchOverlayView: View {
         switch settings.selectedMetric {
         case .cpu:    return LoadLevel(usage: cpuProvider.totalUsage)
         case .memory: return LoadLevel(usage: memoryProvider.usagePercent)
+        case .gpu:    return LoadLevel(usage: gpuProvider.utilization)
         }
     }
 
@@ -66,6 +68,7 @@ struct NotchOverlayView: View {
         switch settings.selectedMetric {
         case .cpu:    return "C"
         case .memory: return "M"
+        case .gpu:    return "G"
         }
     }
 
@@ -73,6 +76,7 @@ struct NotchOverlayView: View {
         switch settings.selectedMetric {
         case .cpu:    return Int(cpuProvider.totalUsage)
         case .memory: return Int(memoryProvider.usagePercent)
+        case .gpu:    return Int(gpuProvider.utilization)
         }
     }
 
@@ -147,6 +151,10 @@ struct NotchOverlayView: View {
             .foregroundColor(.white.opacity(0.45))
         case .memory:
             Text(String(format: "%.1f/%.0fG", memoryProvider.usedGB, memoryProvider.totalGB))
+                .font(.system(size: 9, weight: .regular, design: .monospaced))
+                .foregroundColor(.white.opacity(0.45))
+        case .gpu:
+            Text("GPU")
                 .font(.system(size: 9, weight: .regular, design: .monospaced))
                 .foregroundColor(.white.opacity(0.45))
         }

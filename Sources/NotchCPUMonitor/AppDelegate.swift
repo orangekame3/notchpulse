@@ -5,6 +5,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var overlayWindow: NotchOverlayWindow!
     private let cpuProvider = CPUStatsProvider()
     private let memoryProvider = MemoryStatsProvider()
+    private let gpuProvider = GPUStatsProvider()
     private let settings = SettingsStore()
     private let loginItemManager = LoginItemManager()
 
@@ -16,10 +17,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         setupOverlayWindow()
         cpuProvider.start(interval: settings.refreshInterval)
         memoryProvider.update()
+        gpuProvider.update()
 
-        // Update memory stats on the same timer as CPU
+        // Update memory and GPU stats on the same timer as CPU
         Timer.scheduledTimer(withTimeInterval: settings.refreshInterval, repeats: true) { [weak self] _ in
             self?.memoryProvider.update()
+            self?.gpuProvider.update()
         }
 
         NotificationCenter.default.addObserver(
@@ -59,6 +62,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let overlayView = NotchOverlayView(
             cpuProvider: cpuProvider,
             memoryProvider: memoryProvider,
+            gpuProvider: gpuProvider,
             settings: settings,
             loginItemManager: loginItemManager,
             notchHeight: notchHeight,

@@ -3,6 +3,7 @@ import Foundation
 enum MetricType: String, CaseIterable {
     case cpu = "CPU"
     case memory = "Memory"
+    case gpu = "GPU"
 }
 
 final class SettingsStore: ObservableObject {

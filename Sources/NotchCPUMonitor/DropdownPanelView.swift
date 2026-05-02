@@ -17,7 +17,9 @@ struct DropdownPanelView: View {
                         } label: {
                             Text(metric.rawValue)
                                 .font(.system(size: 11, weight: .medium, design: .monospaced))
-                                .padding(.horizontal, 12)
+                                .lineLimit(1)
+                                .fixedSize(horizontal: true, vertical: false)
+                                .padding(.horizontal, 8)
                                 .padding(.vertical, 5)
                                 .frame(maxWidth: .infinity)
                                 .background(
