@@ -1,6 +1,6 @@
 APP_NAME := NotchPulse
 BUNDLE_ID := com.orangekame3.NotchCPUMonitor
-VERSION := 0.1.1
+VERSION := 0.1.2
 EXECUTABLE := NotchCPUMonitor
 
 BUILD_DIR := .build
