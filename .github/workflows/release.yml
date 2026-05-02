@@ -13,16 +13,18 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get version
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
       - name: Build .app bundle
         run: make app
 
       - name: Create archive
         run: make archive
-
-      - name: Get version
-        id: version
-        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -31,3 +33,10 @@ jobs:
           generate_release_notes: true
           files: |
             .build/NotchPulse-${{ steps.version.outputs.version }}-arm64.tar.gz
+
+      - name: Update Homebrew Cask
+        uses: macauley/action-homebrew-bump-cask@v1
+        with:
+          token: ${{ secrets.TAP_GITHUB_TOKEN }}
+          tap: orangekame3/homebrew-tap
+          cask: notchpulse
