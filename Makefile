@@ -25,6 +25,7 @@ app: release
 	@mkdir -p "$(APP_BUNDLE)/Contents/Resources"
 	@cp "$(RELEASE_DIR)/$(EXECUTABLE)" "$(APP_BUNDLE)/Contents/MacOS/$(EXECUTABLE)"
 	@cp "Sources/$(EXECUTABLE)/Info.plist" "$(APP_BUNDLE)/Contents/Info.plist"
+	@cp "Sources/$(EXECUTABLE)/NotchPulse.icns" "$(APP_BUNDLE)/Contents/Resources/NotchPulse.icns"
 	@codesign --force --sign - "$(APP_BUNDLE)"
 	@echo "Built: $(APP_BUNDLE)"
 

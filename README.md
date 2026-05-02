@@ -1,6 +1,18 @@
-# NotchPulse
+<p align="center">
+  <img src="assets/icon.png" alt="NotchPulse" width="200">
+</p>
 
-A lightweight macOS app that extends your MacBook's notch to display system metrics.
+<h1 align="center">NotchPulse</h1>
+
+<p align="center">A lightweight macOS app that extends your MacBook's notch to display system metrics.</p>
+
+<p align="center">
+  <img src="assets/demo.gif" alt="NotchPulse Demo" width="600">
+</p>
+
+<p align="center">
+  <img src="assets/notch.jpg" alt="NotchPulse Screenshot" width="600">
+</p>
 
 The notch becomes a living system monitor — CPU usage, memory pressure, displayed as a natural extension of the notch itself.
 

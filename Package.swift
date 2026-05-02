@@ -8,7 +8,7 @@ let package = Package(
         .executableTarget(
             name: "NotchCPUMonitor",
             path: "Sources/NotchCPUMonitor",
-            exclude: ["Info.plist"]
+            exclude: ["Info.plist", "NotchPulse.icns"]
         )
     ]
 )

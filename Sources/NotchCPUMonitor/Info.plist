@@ -16,6 +16,8 @@
     <string>1</string>
     <key>CFBundleShortVersionString</key>
     <string>0.1.4</string>
+    <key>CFBundleIconFile</key>
+    <string>NotchPulse</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleInfoDictionaryVersion</key>
