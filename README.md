@@ -25,7 +25,7 @@ The notch becomes a living system monitor — CPU usage, memory pressure, displa
 ### Homebrew
 
 ```bash
-brew install orangekame3/tap/notchpulse
+brew install --cask orangekame3/tap/notchpulse
 ```
 
 ### Manual
@@ -36,8 +36,16 @@ Download the latest `.tar.gz` from [Releases](https://github.com/orangekame3/not
 
 ```bash
 git clone https://github.com/orangekame3/notchpulse.git
-cd notch
+cd notchpulse
 make install
+```
+
+### Note on macOS Gatekeeper
+
+Since the app is not signed with an Apple Developer ID, macOS may show a warning on first launch. To bypass:
+
+```bash
+xattr -cr /Applications/NotchPulse.app
 ```
 
 ## Usage

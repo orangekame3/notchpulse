@@ -12,6 +12,12 @@ cask "notchpulse" do
 
   app "NotchPulse.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/NotchPulse.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Preferences/com.orangekame3.NotchCPUMonitor.plist",
   ]

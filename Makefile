@@ -38,6 +38,7 @@ archive: app
 install: app
 	@echo "Installing $(APP_NAME).app to /Applications..."
 	@cp -r "$(APP_BUNDLE)" "/Applications/$(APP_NAME).app"
+	@xattr -cr "/Applications/$(APP_NAME).app"
 	@echo "Installed. Launch from /Applications or Spotlight."
 
 # Uninstall
