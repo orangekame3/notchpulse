@@ -56,9 +56,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupOverlayWindow() {
         overlayWindow = NotchOverlayWindow()
 
-        // Window starts at midX - 20, notch right edge is at midX + notchWidth/2
-        // So text must start at notchWidth/2 + 20 from window left edge
-        let leftInset = notchWidth / 2 + 20 + 4
+        // Window starts at midX - 12, notch right edge is at midX + notchWidth/2
+        // Text starts notchWidth/2 + 4 from window left edge (8pt left of notch edge, hidden by black-on-black)
+        let leftInset = notchWidth / 2 - 12
 
         let overlayView = NotchOverlayView(
             cpuProvider: cpuProvider,
@@ -98,7 +98,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let wingWidth: CGFloat = 240
         let totalHeight = isPanelOpen ? notchHeight + 400 : notchHeight
         // Well inside the notch — black on black, invisible
-        let x = screenFrame.midX - 20
+        let x = screenFrame.midX - 12
         let y = screenFrame.maxY - totalHeight
 
         overlayWindow.setFrame(

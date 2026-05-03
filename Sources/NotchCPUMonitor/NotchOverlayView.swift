@@ -85,8 +85,8 @@ struct NotchOverlayView: View {
         VStack(spacing: 0) {
             // Wing: black bar flush with notch
             HStack(spacing: 4) {
-                // Left padding: pushes text past the notch right edge
-                Spacer(minLength: leftInset)
+                // Fixed-width spacer: pushes text past the notch right edge
+                Color.clear.frame(width: leftInset)
 
                 Text(metricLabel)
                     .font(.system(size: 10, weight: .bold, design: .monospaced))
