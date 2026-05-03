@@ -52,6 +52,7 @@ struct NotchOverlayView: View {
     let notchHeight: CGFloat
     let leftInset: CGFloat
     let onRefreshRateChange: (TimeInterval) -> Void
+    var onPanelToggle: ((Bool) -> Void)?
 
     @State private var isHovering = false
     @State private var isPanelOpen = false
@@ -117,6 +118,7 @@ struct NotchOverlayView: View {
                 withAnimation(.easeOut(duration: 0.25)) {
                     isPanelOpen.toggle()
                 }
+                onPanelToggle?(isPanelOpen)
             }
 
             if isPanelOpen {
@@ -128,6 +130,7 @@ struct NotchOverlayView: View {
                         withAnimation(.easeOut(duration: 0.2)) {
                             isPanelOpen = false
                         }
+                        onPanelToggle?(false)
                     }
                 )
                 .frame(maxWidth: .infinity, alignment: .trailing)

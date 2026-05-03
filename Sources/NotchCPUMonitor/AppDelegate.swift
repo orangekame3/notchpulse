@@ -11,6 +11,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var notchWidth: CGFloat = 200
     private var notchHeight: CGFloat = 32
+    private var isPanelOpen = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         detectNotchDimensions()
@@ -69,6 +70,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             leftInset: leftInset,
             onRefreshRateChange: { [weak self] interval in
                 self?.cpuProvider.updateInterval(interval)
+            },
+            onPanelToggle: { [weak self] open in
+                self?.isPanelOpen = open
+                self?.positionWindow()
             }
         )
 
@@ -91,7 +96,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Position window so left edge overlaps with notch right edge
         let wingWidth: CGFloat = 240
-        let totalHeight = notchHeight + 400
+        let totalHeight = isPanelOpen ? notchHeight + 400 : notchHeight
         // Well inside the notch — black on black, invisible
         let x = screenFrame.midX - 20
         let y = screenFrame.maxY - totalHeight
